@@ -37,6 +37,9 @@ class Evenement
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'evenements')]
     private $utilisateur;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $all_day;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class Evenement
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getAllDay(): ?bool
+    {
+        return $this->all_day;
+    }
+
+    public function setAllDay(?bool $all_day): self
+    {
+        $this->all_day = $all_day;
 
         return $this;
     }
